@@ -1,0 +1,14 @@
+logging:
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS
+
+spring:
+  rabbitmq:
+    host: 101.35.51.125
+    port: 5672
+    virtual-host: /
+    username: root
+    password: root
+    listener:
+      direct:
+        prefetch: 1 # 消费玩之后才能拿下一个
