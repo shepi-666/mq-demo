@@ -8,6 +8,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import sun.awt.windows.ThemeReader;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -65,5 +67,13 @@ public class SpringAmqpTest {
 
         // 发送消息
         rabbitTemplate.convertAndSend(exchangeName, "china.news", message);
+    }
+
+    @Test
+    public void testSendObjectQueue() {
+        Map<String, Object> msg = new HashMap<>();
+        msg.put("name", "柳岩");
+        msg.put("age", 23);
+        rabbitTemplate.convertAndSend("object.queue", msg);
     }
 }
