@@ -44,4 +44,15 @@ public class SpringAmqpTest {
         // 发送消息
         rabbitTemplate.convertAndSend(exchangeName, "", message);
     }
+
+    @Test
+    public void testSendDirectExchange() {
+        // 交换机名称
+        String exchangeName = "javadong.direct";
+        // 发送的消息
+        String message = "Hello, someone";
+
+        // 发送消息
+        rabbitTemplate.convertAndSend(exchangeName, "red", message);
+    }
 }
